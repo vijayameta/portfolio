@@ -15,12 +15,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { Container, Stack } from '@mui/material';
+import { Container, ImageList, ImageListItem, Paper, Stack, Tooltip } from '@mui/material';
+import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
+import FolderIcon from '@mui/icons-material/Folder'; // Corrected import
+import { Height } from '@mui/icons-material';
 
+import './common.css'
 
 const drawerWidth = 240;
 const navItems = [
@@ -31,18 +35,10 @@ const navItems = [
   { id: 'contact', name: 'Contact' },
 ];
 
-console.log(navItems)
-
 const handleOnClick = () => {
   const url = "https://drive.google.com/file/d/1nBzPvfHMxI7EKtJ7LjocdgoyXoaI_RSM/view?usp=drive_link";
-  window.open(url, "_blank")
+  window.open(url, "_blank");
 };
-
-const listItems = document.getElementsByClassName("link-no-decoration");
-
-for (let i = 0; i < listItems.length; i++) {
-  listItems[i].style.textDecoration = "none";
-}
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -55,14 +51,14 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Porfolio
+        Portfolio 🧾
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.id} className="link-no-decoration">
-            <ListItemButton sx={{ textAlign: 'center', textDecoration: 'none' }}>
-              <Link to={`/${item.id}`} >
+            <ListItemButton sx={{ textAlign: 'center' }}>
+              <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
                 <ListItemText primary={item.name} />
               </Link>
             </ListItemButton>
@@ -73,6 +69,27 @@ function DrawerAppBar(props) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+
+  const mainPhotos = [
+    {
+      src: require("./developer_for_portfolio.jpeg"),  // Corrected to use require
+      alt: 'Error 404',
+      height: "50vh"
+    },
+    {
+      src: require("./developer_doodles.jpeg"),
+      alt: 'Error 404',
+      height: "50vh"
+    }
+  ];
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
   return (
     <Box sx={{ display: 'flex', height: '100vh' }}>
@@ -93,12 +110,12 @@ function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Porfolio
+            Portfolio
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
               <Button key={item.id} className="link-no-decoration">
-                <Link to={`/${item.name}`} style={{ textDecoration: "none", textTransform: "initial", color: "white" }}>
+                <Link to={`/${item.id}`} style={{ textDecoration: "none", textTransform: "initial", color: "white" }}>
                   {item.name}
                 </Link>
               </Button>
@@ -123,65 +140,98 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" >
+      <Box component="main" style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center" }}>
         <Toolbar />
-        <Container
-        // sx={{
-        //   background: '100%',
-        //   color: 'black',
-        //   backgroundImage: `url('https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')`,
-        //   maxHeight: 'max-content',
-        // }}
-        >
+        <Grid style={{ marginTop: 100 }}>
+          <Card sx={{ width: "18vw", mt: 20 }}>
+            <CardContent>
+              <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
+                👋 Hello, I am
+              </Typography>
+              <Typography variant="h4" component="div" sx={{ ml: 10 }}>
+                Vijay
+              </Typography>
+            </CardContent>
+            <CardActions />
+          </Card>
+          <Card sx={{ width: "fit-content", mt: 10 }} >
+            <CardContent>
+              <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
+                👨‍💻 Full Stack Developer
+              </Typography>
+            </CardContent>
+            <CardActions />
+          </Card>
 
-          <Grid>
-
-            <Card sx={{ minWidth: 275, mt: 13 }}>
-              <CardContent>
-                <Typography sx={{ fontSize: 30 }} color="text.secondary" gutterBottom>
-                  👋 Hello, I am
-                </Typography>
-                <Typography variant="h4" component="div" sx={{ ml: 10 }}>
-                  Vijay
-                </Typography>
-              </CardContent>
-              <CardActions>
-              </CardActions>
-            </Card>
-            <Card sx={{ minWidth: 275, mt: 5 }} >
-              <CardContent>
-                <Typography sx={{ fontSize: 25 }} color="text.secondary" gutterBottom>
-                  👨‍💻 Full Stack Developer
-                </Typography>
-              </CardContent>
-              <CardActions>
-              </CardActions>
-            </Card>
-          </Grid>
-          {/* <Link href='https://drive.google.com/file/d/1nBzPvfHMxI7EKtJ7LjocdgoyXoaI_RSM/view?usp=drive_link' target='_blank'></Link> */}
-          <Button variant="contained" sx={{ mt: 2, ml: 15, backgroundColor: 'black', textTransform: 'capitalize' }} target="_blank" onClick={handleOnClick}>
+          <Button
+            variant="contained"
+            sx={{ mt: 2, ml: 15, backgroundColor: 'black', textTransform: 'capitalize' }}
+            target="_blank"
+            onClick={handleOnClick}
+          >
             Resume
           </Button>
-          {/* <Button variant="contained" sx={{mt: 5, ml: 20, backgroundColor: 'black', textTransform: 'capitalize'}}  */}
-          {/* >Download Resume</Button> */}
-        </Container>
-        <Stack sx={{ width: 250, position: 'relative', left: 600, bottom: 350, }}>
-          <img src='https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1510&q=80' alt='Error 404'></img>
-        </Stack>
-        <Stack sx={{ width: 215, position: 'relative', left: 950, bottom: 670 }}>
-          <img src='https://images.unsplash.com/photo-1642697283420-194938fcc339?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80' alt='Error 404'></img>
-        </Stack>
+        </Grid>
+        <Grid xs={4}>
+          <Stack direction="row" style={{ position: "relative", left: "50%", top: "27%" }}>
+            <ImageList cols={2} gap={10}>
+              {mainPhotos.map(item =>
+                <ImageListItem key={item.src} style={{ padding: 10 }}> {/* Using item.src for key */}
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    loading="lazy"
+                    height={item.height}
+                    style={{ width: "100%", height: `${item.height}`, objectFit: "cover/center" }}
+                  />
+                </ImageListItem>
+              )}
+            </ImageList>
+          </Stack>
+          <Typography
+            className="quote"
+            style={{
+              position: 'absolute',
+              bottom: 70,
+              fontSize: '1.5rem',
+              left: 800,
+              wordBreak: 'break-all',
+            }}
+          >
+            <Tooltip
+              title="Code is like humor. When you have to explain it, it’s bad. – Cory House"
+              PopperProps={{
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10],
+                    },
+                  },
+                ],
+              }}
+              componentsProps={{
+                tooltip: {
+                  style: {
+                    fontSize: '1.5rem', // Font size
+                    fontFamily: 'Arial, sans-serif', // Font family
+                    color: '#3498db', // Default text color
+                    transition: 'color 0.3s ease', // Smooth color transition
+                  },
+                },
+              }}
+            >
+              <span style={{ fontFamily: "cursive", fontSize: "1.5rem" }}>Code is like humor. When you have to explain it, it’s bad. – Cory House</span>
+            </Tooltip>
+          </Typography>
+
+        </Grid>
       </Box>
     </Box>
-
   );
-}
 
+}
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
