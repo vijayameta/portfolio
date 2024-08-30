@@ -43,6 +43,13 @@
   transform: scale(1.1);
 }
 
+.cardAlignment {
+  width: 60vw;
+  height: 70vh;
+  padding: 5px;
+  margin: 15px;
+}
+
 @media (max-width: 600px) {
   .imageList {
     display: flex;
@@ -55,5 +62,20 @@
   }
   .name-card {
     width: 100%;
+  }
+
+  .cardAlignment {
+    width: 60vw;
+    padding: 5px;
+    margin: 15px;
+  }
+  /* .MuiContainer-root MuiContainer-maxWidthLg css-imoq00-MuiContainer-root */
+  .MuiContainer-root {
+    display: flex;
+    flex-direction: column;
+  }
+  .cardAlignment {
+    width: fit-content;
+    height: fit-content;
   }
 }

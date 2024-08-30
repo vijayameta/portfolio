@@ -120,9 +120,9 @@ export default function AboutPage() {
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <DrawerAppBar />
       <DrawerAppBar />
-      <Box component="main" sx={{display: "flex",  flexDirection: "column"}}>
+      <Box component="main" sx={{ display: "flex", flexDirection: "column", }}>
         <Container>
-          <Box sx={{ mt: 10 }}>
+          <Box className="quote" sx={{ mt: 10, display: "flow" }}>
             <Typography variant="h4" textAlign="center">
               I Know With Good Development
             </Typography>
@@ -131,73 +131,73 @@ export default function AboutPage() {
             </Typography>
           </Box>
 
-        <Container sx={{ display: 'flex', mt: 4 }}>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea sx={{ paddingLeft: 4 }}>
-              <CardMedia
-                sx={{ borderRadius: '20px' }}
-                component="img"
-                height="140"
-                image="https://trainings.internshala.com/cached_uploads/full-stack-web-development-specialization/banner_hero.png"
-                alt="full stack"
+          <Container sx={{ width: "100vw", display: "flex", mt: 5 }}>
+            <Card className='cardAlignment'>
+              <CardActionArea>
+                <CardMedia
+                  sx={{ borderRadius: '20px' }}
+                  component="img"
+                  height="140"
+                  image="https://trainings.internshala.com/cached_uploads/full-stack-web-development-specialization/banner_hero.png"
+                  alt="full stack"
                 />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Full Stack Developer
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                  Frontend Development:
-                  <Typography fontSize={14}>
-                    As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Full Stack Developer
                   </Typography>
-                  <Typography variant='h6'>
-                    Backend Development:
+                  <Typography variant="h6" color="text.secondary">
+                    Frontend Development:
+                    <Typography fontSize={14}>
+                      As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.
+                    </Typography>
+                    <Typography variant='h6'>
+                      Backend Development:
+                    </Typography>
+                    <Typography fontSize={14}>
+                      As a full stack developer, I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management.
+                    </Typography>
                   </Typography>
-                  <Typography fontSize={14}>
-                    As a full stack developer, I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management.
-                  </Typography>
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea sx={{ paddingLeft: 4 }}>
-              <CardMedia
-                sx={{ borderRadius: '20px' }}
-                component="img"
-                height="140"
-                image="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1275224/cover-secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png"
-                alt="Node.js"
+                </CardContent>
+              </CardActionArea>
+            </Card>
+            <Card className='cardAlignment'>
+              <CardActionArea>
+                <CardMedia
+                  sx={{ borderRadius: '20px' }}
+                  component="img"
+                  height="140"
+                  image="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1275224/cover-secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png"
+                  alt="Node.js"
                 />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Node.js Developer
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea sx={{ paddingLeft: 4 }}>
-              <CardMedia
-                sx={{ borderRadius: '20px' }}
-                component="img"
-                height="140"
-                image="https://latitudetechnolabs.com/wp-content/uploads/2022/05/ReactJS-logo.png"
-                alt="React"
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Node.js Developer
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+            <Card className='cardAlignment'>
+              <CardActionArea>
+                <CardMedia
+                  sx={{ borderRadius: '20px' }}
+                  component="img"
+                  height="140"
+                  image="https://latitudetechnolabs.com/wp-content/uploads/2022/05/ReactJS-logo.png"
+                  alt="React"
                 />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  React Developer
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    React Developer
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
 
           </Container>
           {/* <Card sx={{ maxWidth: 345 }}>
