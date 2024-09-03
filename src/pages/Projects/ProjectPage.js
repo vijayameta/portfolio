@@ -21,6 +21,8 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { StyledCard } from './MainProjectStyle';
+import { Style } from '@mui/icons-material';
 
 
 
@@ -89,7 +91,7 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', height: '100vh' }}>
+    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center" }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ bgcolor: 'black' }}>
         <Toolbar>
@@ -141,159 +143,159 @@ function DrawerAppBar(props) {
         <Toolbar />
       </Box>
       <Box>
-        <Typography variant='h3' marginTop={15} marginLeft={65} fontFamily={"cursive"}>Pet Projects</Typography>
+        <Typography textAlign="center" variant='h3' marginTop={15} fontFamily={"cursive"} mb="100px">Pet Projects</Typography>
         <Grid variant='h3' fontFamily={"cursive"}>
-        <Container sx={{ display: 'flex', flexDirection: "row", justifyContent: "center", alignItems: "center", margin: 2 }}>
-          <Card sx={{ maxWidth: 345, ml: 5 }}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lJ32Bl-lHWmNMUSiSq17gQ.png"
+          <Box className='project-containts' sx={{ display: 'flex', flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 10 }}>
+            <StyledCard className='cards'>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lJ32Bl-lHWmNMUSiSq17gQ.png"
               />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
-                HTML/Css
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/MyOnliineMeal.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
-                MyOnlineMeal.com
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/MyBloggalib.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
-                MyBloggalib
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
+                  HTML/Css
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/MyOnliineMeal.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
+                  MyOnlineMeal.com
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/MyBloggalib.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
+                  MyBloggalib
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-            </CardContent>
-          </Card>
-          <Card sx={{ maxWidth: 345, m: 3 }}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="https://tsh.io/wp-content/uploads/2020/09/typescript-vs-javascript-comparison_.jpg"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
-                JavaScript/typeScript
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/spotify.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+              </CardContent>
+            </StyledCard>
+            <StyledCard className='cards'>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image="https://tsh.io/wp-content/uploads/2020/09/typescript-vs-javascript-comparison_.jpg"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
+                  JavaScript/typeScript
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/spotify.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Spotify Clone
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-            </CardContent>
-          </Card>
-          <Card sx={{ maxWidth: 345, m: 3 }}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/03/nodejs-reference-architecture_1x.png?itok=MqGeWTLm"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
-               NodeJs
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://github.com/vijayameta/Restapi" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+              </CardContent>
+            </StyledCard>
+            <StyledCard className='cards'>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image="https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/03/nodejs-reference-architecture_1x.png?itok=MqGeWTLm"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
+                  NodeJs
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://github.com/vijayameta/Restapi" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-            </CardContent>
-          </Card>
-          <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              height="140"
-              image="https://shethink.in/wp-content/uploads/2021/07/react.js-img.png"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>
-                React.js
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+              </CardContent>
+            </StyledCard>
+            <StyledCard className='cards'>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image="https://shethink.in/wp-content/uploads/2021/07/react.js-img.png"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>
+                  React.js
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography> <Typography variant="body2" color="text.secondary">
-                <Button>
-                  <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
-                    View
-                  </Link>
-                </Button>
+                </Typography> <Typography variant="body2" color="text.secondary">
+                  <Button>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                      View
+                    </Link>
+                  </Button>
                   Gym Website
-              </Typography>
-            </CardContent>
-          </Card>
-        </Container>
-          </Grid>
+                </Typography>
+              </CardContent>
+            </StyledCard>
+          </Box>
+        </Grid>
       </Box>
-    </Box>
+    </Box >
 
   );
 }

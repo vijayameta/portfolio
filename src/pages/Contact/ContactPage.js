@@ -165,7 +165,7 @@ function DrawerAppBar(props) {
       <Box component="main" >
         <Toolbar />
       </Box>
-      <Container>
+      <Box>
         <Typography variant='h3' marginTop={15} marginLeft={32}>Take A Tea & Chat With Me!</Typography>
         <Grid container spacing={10} justifyContent={'center'} sx={{ mt: '-40px' }}>
           <Grid item xs={6} md={4}>
@@ -185,7 +185,7 @@ function DrawerAppBar(props) {
             </Item>
           </Grid>
         </Grid>
-        {!isFormSubmitted && (   <Box sx={{ display: 'flex', flexDirection: 'column', mt: 2, width: '130vh', ml: 26 }}>
+        {!isFormSubmitted && (<Box sx={{ display: 'flex', flexDirection: 'column', mt: 2, width: '130vh', ml: 26 }}>
           <TextField id="name"
             name="name"
             label="Name"
@@ -211,16 +211,16 @@ function DrawerAppBar(props) {
             sx={{ mb: 2 }} value={formData.message} onChange={handleInputChange} />
         </Box>
         )}
-        {!isFormSubmitted && ( <Button variant="contained" sx={{ ml: 70, textTransform: 'initial', mb: 5 }} onClick={handleSendMessage}>Send Message</Button>
+        {!isFormSubmitted && (<Button variant="contained" sx={{ ml: 70, textTransform: 'initial', mb: 5 }} onClick={handleSendMessage}>Send Message</Button>
         )}
-         {isFormSubmitted && (
-  <Box sx={{ my: 2 }}>
-    <Typography variant="body1" color="white" bgcolor={"green"} display={"inline-block"} sx={{ml: 60}}>Form submitted successfully!</Typography>
-  </Box>
-)}
+        {isFormSubmitted && (
+          <Box sx={{ my: 2 }}>
+            <Typography variant="body1" color="white" bgcolor={"green"} display={"inline-block"} sx={{ ml: 60 }}>Form submitted successfully!</Typography>
+          </Box>
+        )}
 
 
-      </Container>
+      </Box>
     </Box>
 
   );

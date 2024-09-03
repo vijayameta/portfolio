@@ -45,12 +45,29 @@
 
 .cardAlignment {
   width: 60vw;
-  height: 70vh;
+  height: 50vh;
   padding: 5px;
   margin: 15px;
 }
 
+.cards {
+  width: 20vw;
+}
+
 @media (max-width: 600px) {
+  .experiance {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+  .project-containts {
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+  }
   .imageList {
     display: flex;
     flex-direction: column;
@@ -65,7 +82,7 @@
   }
 
   .cardAlignment {
-    width: 60vw;
+    width: 40vw;
     padding: 5px;
     margin: 15px;
   }
@@ -77,5 +94,8 @@
   .cardAlignment {
     width: fit-content;
     height: fit-content;
+  }
+  .cards {
+    width: 100vw;
   }
 }

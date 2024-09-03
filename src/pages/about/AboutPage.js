@@ -16,12 +16,14 @@ import {
   Divider,
   CssBaseline,
   Button,
+  Tooltip,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
+import { StyledTypography } from './AnboutPageStyle';
 
 export default function AboutPage() {
   const drawerWidth = 240;
@@ -44,7 +46,9 @@ export default function AboutPage() {
     const drawer = (
       <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <Typography variant="h6" sx={{ my: 2 }}>
-          Porfolio
+          <Link>
+            Porfolio
+          </Link>
         </Typography>
         <Divider />
         <List>
@@ -58,7 +62,7 @@ export default function AboutPage() {
             </ListItem>
           ))}
         </List>
-      </Box>
+      </Box >
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -147,15 +151,16 @@ export default function AboutPage() {
                   </Typography>
                   <Typography variant="h6" color="text.secondary">
                     Frontend Development:
-                    <Typography fontSize={14}>
-                      As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.
-                    </Typography>
-                    <Typography variant='h6'>
-                      Backend Development:
-                    </Typography>
-                    <Typography fontSize={14}>
-                      As a full stack developer, I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management.
-                    </Typography>
+                    <Tooltip title="As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.">
+                      <StyledTypography fontSize={14}>
+                        `{"As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.".slice(0, 100)}<strong>...</strong>`
+                      </StyledTypography>
+                    </Tooltip>
+                    <Tooltip title="As a full stack developer, I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management.">
+                      <StyledTypography fontSize={14}>
+                        `{"I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management....".slice(0, 100)}<strong>...</strong>`
+                      </StyledTypography>
+                    </Tooltip>
                   </Typography>
                 </CardContent>
               </CardActionArea>
@@ -166,16 +171,18 @@ export default function AboutPage() {
                   sx={{ borderRadius: '20px' }}
                   component="img"
                   height="140"
-                  image="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1275224/cover-secure-rest-api-in-nodejs-18f43b3033c239da5d2525cfd9fdc98f.png"
+                  image="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1275224/cover-secure-rest-api-in-nodejs-183b3033c239da5d2525cfd9fdc98f.png"
                   alt="Node.js"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     Node.js Developer
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects.
-                  </Typography>
+                  <Tooltip Tooltip title="As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects.">
+                    <StyledTypography variant="body2" color="text.secondary">
+                      `{"As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects....".slice(0, 280)}<strong>...</strong>`
+                    </StyledTypography>
+                  </Tooltip>
                 </CardContent>
               </CardActionArea>
             </Card>
@@ -192,9 +199,11 @@ export default function AboutPage() {
                   <Typography gutterBottom variant="h5" component="div">
                     React Developer
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications.
-                  </Typography>
+                  <Tooltip title="As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications.">
+                    <StyledTypography variant="body2" color="text.secondary">
+                      `{"As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications....".slice(0, 280)}<strong>...</strong>`
+                    </StyledTypography>
+                  </Tooltip>
                 </CardContent>
               </CardActionArea>
             </Card>
