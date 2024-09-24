@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Box,
@@ -24,6 +24,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from '@mui/material';
 import { StyledTypography } from './AnboutPageStyle';
+import axios from 'axios';
 
 export default function AboutPage() {
   const drawerWidth = 240;
@@ -120,6 +121,21 @@ export default function AboutPage() {
     );
   }
 
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:7000/data');
+        console.log(response.data.data);
+        setData(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error); // Log the error for debugging
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <DrawerAppBar />
@@ -136,77 +152,32 @@ export default function AboutPage() {
           </Box>
 
           <Container sx={{ width: "100vw", display: "flex", mt: 5 }}>
-            <Card className='cardAlignment'>
-              <CardActionArea>
-                <CardMedia
-                  sx={{ borderRadius: '20px' }}
-                  component="img"
-                  height="140"
-                  image="https://trainings.internshala.com/cached_uploads/full-stack-web-development-specialization/banner_hero.png"
-                  alt="full stack"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Full Stack Developer
-                  </Typography>
-                  <Typography variant="h6" color="text.secondary">
-                    Frontend Development:
-                    <Tooltip title="As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.">
-                      <StyledTypography fontSize={14}>
-                        `{"As a full stack developer, I excel in HTML/CSS, JavaScript, React, and Material UI to create visually appealing and responsive interfaces. With expertise in frontend development and UI/UX design, I deliver high-quality web applications.".slice(0, 100)}<strong>...</strong>`
-                      </StyledTypography>
-                    </Tooltip>
-                    <Tooltip title="As a full stack developer, I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management.">
-                      <StyledTypography fontSize={14}>
-                        `{"I use Node.js to build server-side applications, specializing in API development and database integration with PostgresSQL for efficient data management....".slice(0, 100)}<strong>...</strong>`
-                      </StyledTypography>
-                    </Tooltip>
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card className='cardAlignment'>
-              <CardActionArea>
-                <CardMedia
-                  sx={{ borderRadius: '20px' }}
-                  component="img"
-                  height="140"
-                  image="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1275224/cover-secure-rest-api-in-nodejs-183b3033c239da5d2525cfd9fdc98f.png"
-                  alt="Node.js"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Node.js Developer
-                  </Typography>
-                  <Tooltip Tooltip title="As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects.">
-                    <StyledTypography variant="body2" color="text.secondary">
-                      `{"As a Node.js developer, I specialize in building robust and scalable server-side applications and APIs. Leveraging Node.js's event-driven, non-blocking I/O model, I efficiently handle concurrent connections. Using Express.js, I create RESTful APIs and implement server-side logic. With expertise in PostgresSQL database integration, I ensure efficient data storage. Proficient in package management, asynchronous programming, testing, debugging, and deployment, I prioritize reliability and scalability in my projects....".slice(0, 280)}<strong>...</strong>`
-                    </StyledTypography>
-                  </Tooltip>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-            <Card className='cardAlignment'>
-              <CardActionArea>
-                <CardMedia
-                  sx={{ borderRadius: '20px' }}
-                  component="img"
-                  height="140"
-                  image="https://latitudetechnolabs.com/wp-content/uploads/2022/05/ReactJS-logo.png"
-                  alt="React"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    React Developer
-                  </Typography>
-                  <Tooltip title="As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications.">
-                    <StyledTypography variant="body2" color="text.secondary">
-                      `{"As a React developer, I excel in dynamic UI creation, state management, and backend API integration. I utilize React Router for client-side routing, leverage UI libraries for visually appealing designs, and prioritize testing and staying updated with the React ecosystem. This ensures the delivery of efficient, engaging, and high-quality React applications....".slice(0, 280)}<strong>...</strong>`
-                    </StyledTypography>
-                  </Tooltip>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+            {data.map((el) => (
+              <Card key={el._id} className='cardAlignment'> {/* Use unique identifier here */}
+                <CardActionArea>
+                  <CardMedia
+                    sx={{ borderRadius: '20px' }}
+                    component="img"
+                    height="140"
+                    image={el.image}
+                    alt={el.title} // Add alt for accessibility
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {el.techStack}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary">
+                      {el.title}:
+                      <Tooltip title={el.tooltip}>
+                        <StyledTypography fontSize={14}>
+                          {el.description.slice(0, 100)}<strong>...</strong>
+                        </StyledTypography>
+                      </Tooltip>
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))}
 
           </Container>
           {/* <Card sx={{ maxWidth: 345 }}>
