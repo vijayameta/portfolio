@@ -21,7 +21,7 @@ import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -62,7 +62,7 @@ function DrawerAppBar(props) {
   };
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
+    mobile: null,
     email: '',
     message: '',
   });
@@ -76,20 +76,32 @@ function DrawerAppBar(props) {
   };
 
 
-  const handleSendMessage = () => {
-    axios
-      .post('http://localhost:4002/api/v1/students', formData)
-      .then(function (response) {
-        console.log(response.data);
-        // Handle the response as needed
-        setIsFormSubmitted(true);
-      })
-      .catch(function (error) {
-        console.log(error);
-        // Handle the error as needed
-        setIsFormSubmitted(false);
-      });
+  // const handleSendMessage = () => {
+  //   axios
+  //     .post('http://localhost:4002/api/v1/students', formData)
+  //     .then(function (response) {
+  //       console.log(response.data);
+  //       // Handle the response as needed
+  //       setIsFormSubmitted(true);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //       // Handle the error as needed
+  //       setIsFormSubmitted(false);
+  //     });
+  // };
+  const handleSendMessage = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:7000/createdata', formData);
+      console.log(response.data);
+      setIsFormSubmitted(true); // Mark the form as submitted
+    } catch (error) {
+      console.error(error);
+      setIsFormSubmitted(false);
+    }
   };
+
+
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -165,8 +177,8 @@ function DrawerAppBar(props) {
       <Box component="main" >
         <Toolbar />
       </Box>
-      <Box>
-        <Typography variant='h3' marginTop={15} marginLeft={32}>Take A Tea & Chat With Me!</Typography>
+      <Container>
+        <Typography variant='h3' marginTop={15} textAlign='center'>Take A Tea & Chat With Me!</Typography>
         <Grid container spacing={10} justifyContent={'center'} sx={{ mt: '-40px' }}>
           <Grid item xs={6} md={4}>
             <Item>
@@ -185,18 +197,18 @@ function DrawerAppBar(props) {
             </Item>
           </Grid>
         </Grid>
-        {!isFormSubmitted && (<Box sx={{ display: 'flex', flexDirection: 'column', mt: 2, width: '130vh', ml: 26 }}>
+        {!isFormSubmitted && (<Box className="columnBox" sx={{ display: 'flex', flexDirection: 'column', mt: 2, width: '43.5vw', ml: 26 }}>
           <TextField id="name"
             name="name"
             label="Name"
             variant="outlined"
             value={formData.name}
             onChange={handleInputChange} sx={{ mb: 2 }} />
-          <TextField id="phone"
-            name="phone"
-            label="Phone"
+          <TextField id="mobile"
+            name="mobile"
+            label="mobile"
             variant="outlined"
-            value={formData.phone}
+            value={formData.mobile}
             onChange={handleInputChange} sx={{ mb: 2 }} />
           <TextField id="email"
             name="email"
@@ -220,7 +232,7 @@ function DrawerAppBar(props) {
         )}
 
 
-      </Box>
+      </Container>
     </Box>
 
   );
