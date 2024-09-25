@@ -180,25 +180,6 @@ export default function AboutPage() {
             ))}
 
           </Container>
-          {/* <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea sx={{ paddingLeft: 4 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                sx={{ borderRadius: '20px' }}
-                image="https://images.unsplash.com/photo-1642697283420-194938fcc339?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  JavaScript
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  As a JavaScript developer, I have expertise in core JavaScript concepts, DOM manipulation, asynchronous programming, ES6 features, and working with popular libraries and frameworks like React. With experience in frontend and backend development, testing, and debugging, I bring efficiency and innovation to web application development using JavaScript.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card> */}
         </Container>
       </Box>
     </Box>
