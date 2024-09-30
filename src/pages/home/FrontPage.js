@@ -22,7 +22,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 
 import './common.css';
-import Ribbon from 'antd/es/badge/Ribbon';
 
 const drawerWidth = 240;
 const navItems = [
@@ -183,7 +182,7 @@ function DrawerAppBar(props) {
                                             src={item.src}
                                             alt={item.alt}
                                             loading="lazy"
-                                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                                            style={{ width: '100%', height: 'auto', objectFit: 'cover', borderRadius: "40rem" }}
                                         />
                                     </ImageListItem>
                                 ))}
