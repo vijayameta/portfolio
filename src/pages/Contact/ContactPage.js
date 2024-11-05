@@ -10,20 +10,15 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-// import MenuIcon from '@mui/icons-material/';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { Card, Container, Stack } from '@mui/material';
-import { Grid } from '@mui/material';
-import Paper from '@mui/material/Paper';
+import { Card, Container, Stack, Grid, Paper, TextField, Tooltip } from '@mui/material';
 import { styled } from '@mui/material';
-import TextField from '@mui/material/TextField';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-
-
+import { useState } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 const drawerWidth = 240;
 const navItems = [
@@ -33,15 +28,6 @@ const navItems = [
   { id: 'experience', name: 'Experience' },
   { id: 'contact', name: 'Contact' },
 ];
-
-console.log(navItems)
-
-
-const listItems = document.getElementsByClassName("link-no-decoration");
-
-for (let i = 0; i < listItems.length; i++) {
-  listItems[i].style.textDecoration = "none";
-}
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -55,17 +41,22 @@ function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    mobile: '',
+    email: '',
+    message: '',
+  });
 
+  const [errors, setErrors] = useState({
+    name: false,
+    mobile: false,
+    email: false,
+  });
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const [formData, setFormData] = useState({
-    name: '',
-    mobile: null,
-    email: '',
-    message: '',
-  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -73,48 +64,46 @@ function DrawerAppBar(props) {
       ...prevFormData,
       [name]: value,
     }));
-  };
-
-
-  // const handleSendMessage = () => {
-  //   axios
-  //     .post('http://localhost:4002/api/v1/students', formData)
-  //     .then(function (response) {
-  //       console.log(response.data);
-  //       // Handle the response as needed
-  //       setIsFormSubmitted(true);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //       // Handle the error as needed
-  //       setIsFormSubmitted(false);
-  //     });
-  // };
-  const handleSendMessage = async () => {
-    try {
-      const response = await axios.post('http://127.0.0.1:7000/createdata', formData);
-      console.log(response.data);
-      setIsFormSubmitted(true); // Mark the form as submitted
-    } catch (error) {
-      console.error(error);
-      setIsFormSubmitted(false);
+    if (value.trim() !== '') {
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: false }));
     }
   };
 
+  const validateForm = () => {
+    const newErrors = {
+      name: formData.name.trim() === '',
+      mobile: formData.mobile.trim() === '',
+      email: formData.email.trim() === '',
+    };
+    setErrors(newErrors);
+    return !Object.values(newErrors).includes(true);
+  };
 
+  const handleSendMessage = async () => {
+    if (validateForm()) {
+      try {
+        const response = await axios.post('http://127.0.0.1:7000/createdata', formData);
+        console.log(response.data);
+        setIsFormSubmitted(true);
+      } catch (error) {
+        console.error(error);
+        setIsFormSubmitted(false);
+      }
+    }
+  };
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Porfolio
+        Portfolio
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item.id} className="link-no-decoration">
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <Link to={`/${item.id}`} >
-                <ListItemText primary={item.name} sx={{ textDecoration: 'none' }} />
+              <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItemText primary={item.name} />
               </Link>
             </ListItemButton>
           </ListItem>
@@ -124,6 +113,7 @@ function DrawerAppBar(props) {
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
+  const isLargeScreen = useMediaQuery('(min-width:600px)');
 
   return (
     <Box sx={{ display: 'flex', height: '100vh' }}>
@@ -137,19 +127,15 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            {/* <MenuIcon /> */}
+            {/* Icon for mobile menu */}
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            Porfolio
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+            Portfolio
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item.id} className="link-no-decoration">
-                <Link to={`/${item.name}`} style={{ textDecoration: "none", textTransform: "initial", color: "white" }}>
+              <Button key={item.id}>
+                <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'white', textTransform: 'capitalize' }}>
                   {item.name}
                 </Link>
               </Button>
@@ -163,9 +149,7 @@ function DrawerAppBar(props) {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
+          ModalProps={{ keepMounted: true }}
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
@@ -174,75 +158,106 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" >
-        <Toolbar />
-      </Box>
-      <Container>
-        <Typography variant='h3' marginTop={15} textAlign='center'>Take A Tea & Chat With Me!</Typography>
-        <Grid container spacing={10} justifyContent={'center'} sx={{ mt: '-40px' }}>
-          <Grid item xs={6} md={4}>
+      <Container sx={{ mt: 15 }}>
+        <Typography className="quote" variant="h3" sx={{ textAlign: 'center', marginLeft: isLargeScreen ? 35 : 0 }}>
+          Take A Tea & Chat With Me!
+        </Typography>
+        <Grid container spacing={10} justifyContent="center">
+          <Grid item xs={12} md={4}>
             <Item>
-              <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+              <Stack direction="row" justifyContent="center" alignItems="center">
                 <Typography fontSize={50}> 💌 </Typography>
-                <Typography color={'black'} marginTop={3}>96ametavijay@gmail.com</Typography>
+                <Typography marginLeft={1}>96ametavijay@gmail.com</Typography>
               </Stack>
             </Item>
           </Grid>
-          <Grid item xs={6} md={4}>
+          <Grid item xs={12} md={4}>
             <Item>
-              <Stack sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                <Typography fontSize={50}> &#128241; </Typography>
-                <Typography color={'black'} marginTop={3}>+91-8209220877</Typography>
+              <Stack direction="row" justifyContent="center" alignItems="center">
+                <Typography fontSize={50}> 📱 </Typography>
+                <Typography marginLeft={1}>+91-8209220877</Typography>
               </Stack>
             </Item>
           </Grid>
         </Grid>
-        {!isFormSubmitted && (<Box className="columnBox" sx={{ display: 'flex', flexDirection: 'column', mt: 2, width: '43.5vw', ml: 26 }}>
-          <TextField id="name"
-            name="name"
-            label="Name"
-            variant="outlined"
-            value={formData.name}
-            onChange={handleInputChange} sx={{ mb: 2 }} />
-          <TextField id="mobile"
-            name="mobile"
-            label="mobile"
-            variant="outlined"
-            value={formData.mobile}
-            onChange={handleInputChange} sx={{ mb: 2 }} />
-          <TextField id="email"
-            name="email"
-            label="Email"
-            variant="outlined"
-            value={formData.email}
-            onChange={handleInputChange} sx={{ mb: 2 }} />
-          <TextField id="message"
-            name="message"
-            label="Message"
-            variant="outlined"
-            sx={{ mb: 2 }} value={formData.message} onChange={handleInputChange} />
-        </Box>
-        )}
-        {!isFormSubmitted && (<Button variant="contained" sx={{ ml: 70, textTransform: 'initial', mb: 5 }} onClick={handleSendMessage}>Send Message</Button>
-        )}
-        {isFormSubmitted && (
-          <Box sx={{ my: 2 }}>
-            <Typography variant="body1" color="white" bgcolor={"green"} display={"inline-block"} sx={{ ml: 60 }}>Form submitted successfully!</Typography>
+        {!isFormSubmitted && (
+          <Box sx={{ mt: 3, maxWidth: '100%', mx: 'auto', px: { xs: 1, md: 0 } }}>
+            <TextField
+              name="name"
+              label="Name"
+              variant="outlined"
+              fullWidth
+              value={formData.name}
+              onChange={handleInputChange}
+              error={errors.name}
+              helperText={errors.name ? 'Name is required' : ''}
+              sx={{ mb: 2 }}
+            />
+            <TextField
+              name="mobile"
+              label="Mobile"
+              variant="outlined"
+              fullWidth
+              value={formData.mobile}
+              onChange={handleInputChange}
+              error={errors.mobile}
+              helperText={errors.mobile ? 'Mobile number is required' : ''}
+              sx={{ mb: 2 }}
+            />
+            <TextField
+              name="email"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={formData.email}
+              onChange={handleInputChange}
+              error={errors.email}
+              helperText={errors.email ? 'Email is required' : ''}
+              sx={{ mb: 2 }}
+            />
+            <TextField
+              name="message"
+              label="Message"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              value={formData.message}
+              onChange={handleInputChange}
+              error={errors.message}
+              helperText={errors.message ? 'Message is required' : ''}
+              sx={{ mb: 2 }}
+            />
+            <Button
+              variant="contained"
+              sx={{
+                display: 'block',
+                mx: 'auto',
+                textTransform: 'initial',
+                mt: 2,
+                mb: 5,
+                fontSize: '0.875rem',
+                padding: '8px 16px',
+              }}
+              onClick={handleSendMessage}
+            >
+              Send Message
+            </Button>
           </Box>
         )}
-
-
+        {isFormSubmitted && (
+          <Box sx={{ my: 2, textAlign: 'center' }}>
+            <Typography variant="body1" color="success.main">
+              Form submitted successfully!
+            </Typography>
+          </Box>
+        )}
       </Container>
     </Box>
-
   );
 }
 
 DrawerAppBar.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
