@@ -39,15 +39,17 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Portfolio
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Portfolio
+        </Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.id} className="link-no-decoration">
+          <ListItem key={item.id}>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <Link to={`/${item.id}`}>
-                <ListItemText primary={item.name} sx={{ textDecoration: 'none' }} />
+              <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                <ListItemText primary={item.name} />
               </Link>
             </ListItemButton>
           </ListItem>
@@ -86,13 +88,26 @@ function DrawerAppBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-            Portfolio
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ display: { xs: 'flex', sm: 'none' }, marginLeft: 1, color: 'white' }}
+            >
+              Portfolio
+            </Typography>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' }, color: 'white' }}
+            >
+              Portfolio
+            </Typography>
+          </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item.id}>
-                <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'white', textTransform: 'capitalize' }}>
+              <Button key={item.id} className="link-no-decoration">
+                <Link to={`/${item.name}`} style={{ textDecoration: 'none', textTransform: 'initial', color: 'white' }}>
                   {item.name}
                 </Link>
               </Button>

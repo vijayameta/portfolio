@@ -14,11 +14,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import { Card, Container, Stack, Grid, Paper, TextField, Tooltip } from '@mui/material';
-import { styled } from '@mui/material';
+import { Card, Container, Stack, Grid, Paper, TextField } from '@mui/material';
+import { styled, useMediaQuery } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 import axios from 'axios';
 import { useState } from 'react';
-import { useMediaQuery } from '@mui/material';
 
 const drawerWidth = 240;
 const navItems = [
@@ -39,7 +39,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function DrawerAppBar(props) {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -47,7 +47,6 @@ function DrawerAppBar(props) {
     email: '',
     message: '',
   });
-
   const [errors, setErrors] = useState({
     name: false,
     mobile: false,
@@ -95,12 +94,14 @@ function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        Portfolio
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          Portfolio
+        </Link>
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item.id} className="link-no-decoration">
+          <ListItem key={item.id}>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <ListItemText primary={item.name} />
@@ -111,6 +112,7 @@ function DrawerAppBar(props) {
       </List>
     </Box>
   );
+
 
   const container = window !== undefined ? () => window().document.body : undefined;
   const isLargeScreen = useMediaQuery('(min-width:600px)');
@@ -127,15 +129,28 @@ function DrawerAppBar(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            {/* Icon for mobile menu */}
+            <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-            Portfolio
-          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ display: { xs: 'flex', sm: 'none' }, marginLeft: 1, color: 'white' }}
+            >
+              Portfolio
+            </Typography>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' }, color: 'white' }}
+            >
+              Portfolio
+            </Typography>
+          </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item.id}>
-                <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'white', textTransform: 'capitalize' }}>
+              <Button key={item.id} className="link-no-decoration">
+                <Link to={`/${item.name}`} style={{ textDecoration: 'none', textTransform: 'initial', color: 'white' }}>
                   {item.name}
                 </Link>
               </Button>
@@ -243,13 +258,6 @@ function DrawerAppBar(props) {
             >
               Send Message
             </Button>
-          </Box>
-        )}
-        {isFormSubmitted && (
-          <Box sx={{ my: 2, textAlign: 'center' }}>
-            <Typography variant="body1" color="success.main">
-              Form submitted successfully!
-            </Typography>
           </Box>
         )}
       </Container>
