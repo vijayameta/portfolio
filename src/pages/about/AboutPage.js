@@ -17,12 +17,12 @@ import {
   CssBaseline,
   Button,
   Tooltip,
+  Card,
+  CardContent,
+  CardMedia,
+  CardActionArea,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import { CardActionArea } from '@mui/material';
 import { StyledTypography } from './AnboutPageStyle';
 import axios from 'axios';
 
@@ -38,7 +38,7 @@ export default function AboutPage() {
 
   function DrawerAppBar(props) {
     const { window } = props;
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
       setMobileOpen((prevState) => !prevState);
@@ -47,8 +47,8 @@ export default function AboutPage() {
     const drawer = (
       <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
         <Typography variant="h6" sx={{ my: 2 }}>
-          <Link>
-            Porfolio
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            Portfolio
           </Link>
         </Typography>
         <Divider />
@@ -56,14 +56,14 @@ export default function AboutPage() {
           {navItems.map((item) => (
             <ListItem key={item.id}>
               <ListItemButton sx={{ textAlign: 'center' }}>
-                <Link to={`/${item.id}`}>
-                  <ListItemText sx={{ textDecoration: 'none' }} primary={item.name} />
+                <Link to={`/${item.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <ListItemText primary={item.name} />
                 </Link>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-      </Box >
+      </Box>
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
@@ -82,17 +82,26 @@ export default function AboutPage() {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
-              Porfolio
-            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ display: { xs: 'flex', sm: 'none' }, marginLeft: 1, color: 'white' }}
+              >
+                Portfolio
+              </Typography>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ display: { xs: 'none', sm: 'block' }, color: 'white' }}
+              >
+                Portfolio
+              </Typography>
+            </Box>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {navItems.map((item) => (
                 <Button key={item.id} className="link-no-decoration">
-                  <Link to={`/${item.name}`} style={{ textDecoration: "none", textTransform: "initial", color: "white" }}>
+                  <Link to={`/${item.name}`} style={{ textDecoration: 'none', textTransform: 'initial', color: 'white' }}>
                     {item.name}
                   </Link>
                 </Button>
@@ -121,7 +130,7 @@ export default function AboutPage() {
     );
   }
 
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -139,10 +148,9 @@ export default function AboutPage() {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <DrawerAppBar />
-      <DrawerAppBar />
-      <Box component="main" sx={{ display: "flex", flexDirection: "column", }}>
+      <Box component="main" sx={{ display: "flex", flexDirection: "column" }}>
         <Container>
-          <Box className="quote" sx={{ mt: 10, display: "flow" }}>
+          <Box className="quote" sx={{ mt: 10, display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Typography variant="h4" textAlign="center">
               I Know With Good Development
             </Typography>
@@ -178,27 +186,7 @@ export default function AboutPage() {
                 </CardActionArea>
               </Card>
             ))}
-
           </Container>
-          {/* <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea sx={{ paddingLeft: 4 }}>
-              <CardMedia
-                component="img"
-                height="140"
-                sx={{ borderRadius: '20px' }}
-                image="https://images.unsplash.com/photo-1642697283420-194938fcc339?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  JavaScript
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  As a JavaScript developer, I have expertise in core JavaScript concepts, DOM manipulation, asynchronous programming, ES6 features, and working with popular libraries and frameworks like React. With experience in frontend and backend development, testing, and debugging, I bring efficiency and innovation to web application development using JavaScript.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card> */}
         </Container>
       </Box>
     </Box>
