@@ -132,10 +132,11 @@ export default function AboutPage() {
 
   const [data, setData] = useState([]);
 
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:7000/data');
+        const response = await axios.get('https://vercel.com/vijay-ametas-projects/portfolio-backend/data');
         console.log(response.data.data);
         setData(response.data.data);
       } catch (error) {
