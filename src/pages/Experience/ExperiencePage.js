@@ -65,7 +65,7 @@ function DrawerAppBar(props) {
   React.useEffect(() => {
     const getExperienceData = async () => {
       try {
-        const response = await axios.get('https://portfolio-seven-pi-10.vercel.app/experience');
+        const response = await axios.get('https://portfolio-backend-2qtiwy6ix-vijay-ametas-projects.vercel.app/experience');
         setExperience(response.data.data);
       } catch (error) {
         console.log(error);
