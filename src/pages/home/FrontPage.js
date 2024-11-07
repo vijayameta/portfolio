@@ -33,7 +33,7 @@ const navItems = [
 ];
 
 const handleOnClick = () => {
-    const url = "https://drive.google.com/file/d/1PAGhYty8ZFq-YvaAWKNB1KN4Kr8OfETN/view?usp=drive_link";
+    const url = "https://drive.google.com/file/d/1N1VUp2djb1AdBzDa2NTEj86WtnzDWDuQ/view?usp=drive_link";
     window.open(url, "_blank");
 };
 
