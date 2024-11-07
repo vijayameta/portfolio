@@ -132,15 +132,16 @@ export default function AboutPage() {
 
   const [data, setData] = useState([]);
 
-  axios.defaults.withCredentials = true;
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://vercel.com/vijay-ametas-projects/portfolio-backend/data');
+        const response = await axios.get('https://portfolio-backend-git-vijay-backend-vijay-ametas-projects.vercel.app/data', {
+          withCredentials: true // Allow sending credentials (cookies)
+        });
         console.log(response.data.data);
         setData(response.data.data);
       } catch (error) {
-        console.error("Error fetching data:", error); // Log the error for debugging
+        console.error("Error fetching data:", error);
       }
     };
     fetchData();
