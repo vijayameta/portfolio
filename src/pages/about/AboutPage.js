@@ -135,9 +135,7 @@ export default function AboutPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://portfolio-seven-pi-10.vercel.app/data', {
-          withCredentials: true // Allow sending credentials (cookies)
-        });
+        const response = await axios.get('https://portfolio-seven-pi-10.vercel.app/data');
         console.log(response.data.data);
         setData(response.data.data);
       } catch (error) {
