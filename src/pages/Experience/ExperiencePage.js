@@ -176,13 +176,13 @@ function DrawerAppBar(props) {
           {experience.map((item) =>
             item.experience.map((exp) => (
               <Container key={exp._id} sx={{ mt: 5, textAlign: 'center' }}>
-                <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }} fontFamily="cursive">
+                <Typography variant="h6" sx={{ mt: 1, fontWeight: 'bold' }}>
                   {exp.date.start} - {exp.date.end}
                 </Typography>
-                <Typography variant="h6" sx={{ fontWeight: 'bold' }} fontFamily="cursive">
+                <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                   {exp.position} - {exp.company}
                 </Typography>
-                <Typography sx={{ maxWidth: '50%', margin: 'auto' }} fontFamily="cursive">
+                <Typography sx={{ maxWidth: '50%', margin: 'auto' }}>
                   <strong>Skills:</strong> {exp.skills.join(', ')}
                 </Typography>
               </Container>
