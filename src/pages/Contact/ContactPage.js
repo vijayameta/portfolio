@@ -69,11 +69,16 @@ function DrawerAppBar(props) {
   };
 
   const validateForm = () => {
+    const nameIsValid = /^[A-Za-z\s]+$/.test(formData.name);
+    const mobileIsValid = /^[0-9]{10}$/.test(formData.mobile);
+    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+
     const newErrors = {
-      name: formData.name.trim() === '',
-      mobile: formData.mobile.trim() === '',
-      email: formData.email.trim() === '',
+      name: !nameIsValid,
+      mobile: !mobileIsValid,
+      email: !emailIsValid,
     };
+
     setErrors(newErrors);
     return !Object.values(newErrors).includes(true);
   };
@@ -113,7 +118,6 @@ function DrawerAppBar(props) {
     </Box>
   );
 
-
   const container = window !== undefined ? () => window().document.body : undefined;
   const isLargeScreen = useMediaQuery('(min-width:600px)');
 
@@ -132,18 +136,7 @@ function DrawerAppBar(props) {
             <MenuIcon />
           </IconButton>
           <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ display: { xs: 'flex', sm: 'none' }, marginLeft: 1, color: 'white' }}
-            >
-              Portfolio
-            </Typography>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ display: { xs: 'none', sm: 'block' }, color: 'white' }}
-            >
+            <Typography variant="h6" component="div" sx={{ color: 'white' }}>
               Portfolio
             </Typography>
           </Box>
@@ -205,7 +198,7 @@ function DrawerAppBar(props) {
               value={formData.name}
               onChange={handleInputChange}
               error={errors.name}
-              helperText={errors.name ? 'Name is required' : ''}
+              helperText={errors.name ? 'Name must contain only letters' : ''}
               sx={{ mb: 2 }}
             />
             <TextField
@@ -216,7 +209,7 @@ function DrawerAppBar(props) {
               value={formData.mobile}
               onChange={handleInputChange}
               error={errors.mobile}
-              helperText={errors.mobile ? 'Mobile number is required' : ''}
+              helperText={errors.mobile ? 'Mobile number must be exactly 10 digits' : ''}
               sx={{ mb: 2 }}
             />
             <TextField
@@ -227,7 +220,7 @@ function DrawerAppBar(props) {
               value={formData.email}
               onChange={handleInputChange}
               error={errors.email}
-              helperText={errors.email ? 'Email is required' : ''}
+              helperText={errors.email ? 'Please enter a valid email address' : ''}
               sx={{ mb: 2 }}
             />
             <TextField
@@ -239,8 +232,6 @@ function DrawerAppBar(props) {
               rows={4}
               value={formData.message}
               onChange={handleInputChange}
-              error={errors.message}
-              helperText={errors.message ? 'Message is required' : ''}
               sx={{ mb: 2 }}
             />
             <Button
@@ -260,6 +251,7 @@ function DrawerAppBar(props) {
             </Button>
           </Box>
         )}
+        {isFormSubmitted && <Typography variant="h6">Thank you for your message!</Typography>}
       </Container>
     </Box>
   );
