@@ -136,7 +136,7 @@ function DrawerAppBar(props) {
         <Toolbar />
       </Box>
 
-      <Typography variant="h3" textAlign="center" fontFamily="cursive">
+      <Typography variant="h3" textAlign="center">
         Skills & Experience
       </Typography>
       <Box sx={{ mt: 4 }}>

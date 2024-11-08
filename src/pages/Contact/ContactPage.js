@@ -170,7 +170,7 @@ function DrawerAppBar(props) {
         <Typography className="quote" variant="h3" sx={{ textAlign: 'center', marginLeft: isLargeScreen ? 35 : 0 }}>
           Take A Tea & Chat With Me!
         </Typography>
-        <Grid container spacing={10} justifyContent="center">
+        <Grid container justifyContent="center">
           <Grid item xs={12} md={4}>
             <Item>
               <Stack direction="row" justifyContent="center" alignItems="center">
@@ -189,7 +189,7 @@ function DrawerAppBar(props) {
           </Grid>
         </Grid>
         {!isFormSubmitted && (
-          <Box sx={{ mt: 3, maxWidth: '100%', mx: 'auto', px: { xs: 1, md: 0 } }}>
+          <Container sx={{ mt: 3, maxWidth: '100%', mx: 'auto', px: { xs: 1, md: 0 } }}>
             <TextField
               name="name"
               label="Name"
@@ -249,9 +249,9 @@ function DrawerAppBar(props) {
             >
               Send Message
             </Button>
-          </Box>
+          </Container>
         )}
-        {isFormSubmitted && <Typography variant="h6">Thank you for your message!</Typography>}
+        {isFormSubmitted && <Typography textAlign={'center'} variant="h6">Thank you for your message!</Typography>}
       </Container>
     </Box>
   );
