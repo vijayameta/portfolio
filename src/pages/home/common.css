@@ -45,7 +45,6 @@
 
 .cardAlignment {
   width: 60vw;
-  height: 50vh;
   padding: 5px;
   margin: 15px;
 }
@@ -97,6 +96,7 @@
   }
 
   .cards {
-    width: 94vw; /* Full width for cards on small screens */
+    width: 94vw;
+    border-radius: 20px;
   }
 }
