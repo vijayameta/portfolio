@@ -159,7 +159,11 @@ function DrawerAppBar(props) {
                 component="img"
                 alt="green iguana"
                 height="200"
+                sx={{
+                  borderRadius: '20px'
+                }}
                 image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lJ32Bl-lHWmNMUSiSq17gQ.png"
+                loading='lazy'
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
@@ -196,7 +200,11 @@ function DrawerAppBar(props) {
                 component="img"
                 alt="green iguana"
                 height="200"
+                sx={{
+                  borderRadius: '20px'
+                }}
                 image="https://tsh.io/wp-content/uploads/2020/09/typescript-vs-javascript-comparison_.jpg"
+                loading='lazy'
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
@@ -233,7 +241,11 @@ function DrawerAppBar(props) {
                 component="img"
                 alt="green iguana"
                 height="200"
+                sx={{
+                  borderRadius: '20px'
+                }}
                 image="https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/03/nodejs-reference-architecture_1x.png?itok=MqGeWTLm"
+                loading='lazy'
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" textAlign={"center"}>
@@ -270,7 +282,11 @@ function DrawerAppBar(props) {
                 component="img"
                 alt="green iguana"
                 height="200"
+                sx={{
+                  borderRadius: '20px'
+                }}
                 image="https://shethink.in/wp-content/uploads/2021/07/react.js-img.png"
+                loading='lazy'
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div" textAlign={'center'}>

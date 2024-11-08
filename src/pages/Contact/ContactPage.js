@@ -166,11 +166,11 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Container sx={{ mt: 15 }}>
+      <Container sx={{ mt: 11 }}>
         <Typography className="quote" variant="h3" sx={{ textAlign: 'center', marginLeft: isLargeScreen ? 35 : 0 }}>
           Take A Tea & Chat With Me!
         </Typography>
-        <Grid container justifyContent="center">
+        <Grid container sx={{ mt: 0.5 }} spacing={3} justifyContent="center">
           <Grid item xs={12} md={4}>
             <Item>
               <Stack direction="row" justifyContent="center" alignItems="center">

@@ -170,7 +170,8 @@ export default function AboutPage() {
                     component="img"
                     height="140"
                     image={el.image}
-                    alt={el.title} // Add alt for accessibility
+                    alt={el.title}
+                    loading='lazy'
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
@@ -180,7 +181,7 @@ export default function AboutPage() {
                       {el.title}:
                       <Tooltip title={el.tooltip}>
                         <StyledTypography fontSize={14}>
-                          {el.description.slice(0, 100)}<strong>...</strong>
+                          {el.description.slice(0, 250)}<strong>...</strong>
                         </StyledTypography>
                       </Tooltip>
                     </Typography>

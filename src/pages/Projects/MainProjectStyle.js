@@ -2,5 +2,5 @@ import { Card } from "@mui/material";
 import { styled } from "@mui/system";
 
 export const StyledCard = styled(Card)`{
- background-color: green
+ background-color: green,
 }`

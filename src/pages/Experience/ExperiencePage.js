@@ -155,7 +155,8 @@ function DrawerAppBar(props) {
               { alt: 'Kubernetes', src: 'https://i1.wp.com/mlinproduction.com/wp-content/uploads/2019/04/kubernetes_logo.png?fit=730%2C389&ssl=1' },
             ].map((skill, index) => (
               <Grid item xs={6} sm={4} md={2} key={index} display="flex" justifyContent="center" alignItems="center">
-                <Avatar sx={{ height: 80, width: 80 }} alt={skill.alt} src={skill.src} />
+                <Avatar sx={{ height: 80, width: 80 }} alt={skill.alt} src={skill.src} loading='lazy'
+                />
               </Grid>
             ))}
           </Grid>
