@@ -24,9 +24,6 @@ import CardMedia from '@mui/material/CardMedia';
 import { StyledCard } from './MainProjectStyle';
 import { Style } from '@mui/icons-material';
 
-
-
-
 const drawerWidth = 240;
 const navItems = [
   { id: 'home', name: 'Home' },
@@ -93,7 +90,7 @@ function DrawerAppBar(props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: "center", alignItems: "center" }}>
+    <Box sx={{ display: 'block' }}>
       <CssBaseline />
       <AppBar component="nav" sx={{ bgcolor: 'black' }}>
         <Toolbar>
@@ -154,14 +151,14 @@ function DrawerAppBar(props) {
         <Toolbar />
       </Box>
       <Box>
-        <Typography textAlign="center" variant='h3' marginTop={15} fontFamily={"cursive"} mb="100px">Pet Projects</Typography>
+        <Typography textAlign="center" variant='h3' marginTop={5} mb="100px">Pet Projects</Typography>
         <Grid variant='h3' fontFamily={"cursive"}>
           <Box className='project-containts' sx={{ display: 'flex', flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 10 }}>
             <StyledCard className='cards'>
               <CardMedia
                 component="img"
                 alt="green iguana"
-                height="140"
+                height="200"
                 image="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*lJ32Bl-lHWmNMUSiSq17gQ.png"
               />
               <CardContent>
@@ -170,7 +167,7 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/MyOnliineMeal.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://vijayameta.github.io/MyOnliineMeal.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
@@ -178,7 +175,7 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/MyBloggalib.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://vijayameta.github.io/MyBloggalib.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
@@ -186,7 +183,7 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
@@ -198,7 +195,7 @@ function DrawerAppBar(props) {
               <CardMedia
                 component="img"
                 alt="green iguana"
-                height="140"
+                height="200"
                 image="https://tsh.io/wp-content/uploads/2020/09/typescript-vs-javascript-comparison_.jpg"
               />
               <CardContent>
@@ -207,7 +204,7 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/spotify.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://vijayameta.github.io/spotify.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
@@ -215,7 +212,7 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
@@ -223,11 +220,11 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://github.com/vijayameta/mcq-box" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
+                  Live MCQ App
                 </Typography>
               </CardContent>
             </StyledCard>
@@ -235,7 +232,7 @@ function DrawerAppBar(props) {
               <CardMedia
                 component="img"
                 alt="green iguana"
-                height="140"
+                height="200"
                 image="https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/03/nodejs-reference-architecture_1x.png?itok=MqGeWTLm"
               />
               <CardContent>
@@ -244,26 +241,27 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://github.com/vijayameta/Restapi" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://github.com/vijayameta/Restapi" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
+                  Students Data Api's
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="#" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
+                  Tours Api's
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="#" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
+                  Portfolio Api's
                 </Typography>
               </CardContent>
             </StyledCard>
@@ -271,7 +269,7 @@ function DrawerAppBar(props) {
               <CardMedia
                 component="img"
                 alt="green iguana"
-                height="140"
+                height="200"
                 image="https://shethink.in/wp-content/uploads/2021/07/react.js-img.png"
               />
               <CardContent>
@@ -280,33 +278,34 @@ function DrawerAppBar(props) {
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://samparkdev.e-connectsolutions.com/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
+                  Raj Sampark (Raj. Govt.)
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://portfolio-seven-pi-10.vercel.app/Projects" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
-                </Typography> <Typography variant="body2" color="text.secondary">
+                  Portfolio App
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
                   <Button>
-                    <Link to="https://vijayameta.github.io/vijayfitness.github.io/" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white" }} target='_blank'>
+                    <Link to="https://github.com/vijayameta/mcq-box" style={{ textDecoration: "none", textTransform: "initial", background: "black", color: "white", width: 100, borderRadius: 10 }} target='_blank'>
                       View
                     </Link>
                   </Button>
-                  Gym Website
+                  Mcq App
                 </Typography>
               </CardContent>
             </StyledCard>
           </Box>
         </Grid>
       </Box>
-    </Box >
+    </Box>
 
   );
 }
