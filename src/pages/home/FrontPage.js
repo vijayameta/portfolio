@@ -230,7 +230,7 @@ function DrawerAppBar(props) {
                                     },
                                 }}
                             >
-                                <Typography style={{ fontFamily: "cursive", fontSize: "1.5rem", textAlign: "center" }}>👺 Code is like humor. When you have to explain it, it’s bad. – Cory House</Typography>
+                                <Typography style={{ fontSize: "1.8rem", textAlign: "center" }}>👺 Code is like humor. When you have to explain it, it’s bad. – Cory House</Typography>
                             </Tooltip>
                         </Typography>
                     </Grid>
