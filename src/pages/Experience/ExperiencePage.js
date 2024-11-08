@@ -75,7 +75,7 @@ function DrawerAppBar(props) {
   }, []);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Box>
       <CssBaseline />
       <AppBar component="nav" sx={{ bgcolor: 'black' }}>
         <Toolbar>
@@ -142,35 +142,24 @@ function DrawerAppBar(props) {
       <Box sx={{ mt: 4 }}>
         <Container>
           {/* Responsive Grid for Skills */}
+          {/* Responsive Grid for Skills */}
           <Grid container spacing={4} justifyContent="center">
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="HTML5" src="https://w7.pngwing.com/pngs/201/90/png-transparent-logo-html-html5.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="CSS3" src="https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="JavaScript" src="https://www.citypng.com/public/uploads/preview/js-javascript-round-logo-icon-png-11662226392lsrrajcm0y.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="Material UI" src="https://mui.com/static/logo.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="React" src="https://cdn.kinandcarta.com/-/media-assets/images/kincarta/insights/2022/02/react-native/react_hero.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="NodeJS" src="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvPGY8Y9lklAYF0Nemx3spcoDQeb4K6NSZugZKts&s" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="Travis Howard" src="https://cdn.shortpixel.ai/spai/q_lossy+w_949+to_webp+ret_img/http://algotrading101.com/learn/wp-content/uploads/2022/09/Microsoft-Azure-Logo.png" />
-            </Grid>
-            <Grid item xs={6} sm={4} md={2}>
-              <Avatar sx={{ height: 80, width: 80 }} alt="Cindy Baker" src="https://i1.wp.com/mlinproduction.com/wp-content/uploads/2019/04/kubernetes_logo.png?fit=730%2C389&ssl=1" />
-            </Grid>
+            {[
+              { alt: 'HTML5', src: 'https://w7.pngwing.com/pngs/201/90/png-transparent-logo-html-html5.png' },
+              { alt: 'CSS3', src: 'https://w7.pngwing.com/pngs/696/424/png-transparent-logo-css-css3-thumbnail.png' },
+              { alt: 'JavaScript', src: 'https://www.citypng.com/public/uploads/preview/js-javascript-round-logo-icon-png-11662226392lsrrajcm0y.png' },
+              { alt: 'Material UI', src: 'https://mui.com/static/logo.png' },
+              { alt: 'React', src: 'https://cdn.kinandcarta.com/-/media-assets/images/kincarta/insights/2022/02/react-native/react_hero.png' },
+              { alt: 'NodeJS', src: 'https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png' },
+              { alt: 'Azure', src: 'https://cdn.shortpixel.ai/spai/q_lossy+w_949+to_webp+ret_img/http://algotrading101.com/learn/wp-content/uploads/2022/09/Microsoft-Azure-Logo.png' },
+              { alt: 'Kubernetes', src: 'https://i1.wp.com/mlinproduction.com/wp-content/uploads/2019/04/kubernetes_logo.png?fit=730%2C389&ssl=1' },
+            ].map((skill, index) => (
+              <Grid item xs={6} sm={4} md={2} key={index} display="flex" justifyContent="center" alignItems="center">
+                <Avatar sx={{ height: 80, width: 80 }} alt={skill.alt} src={skill.src} />
+              </Grid>
+            ))}
           </Grid>
+
 
           {/* Experience Data */}
           {experience.map((item) =>
